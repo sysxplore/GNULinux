@@ -1,0 +1,1255 @@
+               ▄▄                                              
+▀████▀         ██                                              
+  ██                                                           
+  ██         ▀███     ▀████████▄     ▀███  ▀███     ▀██▀   ▀██▀
+  ██           ██       ██    ██       ██    ██       ▀██ ▄█▀  
+  ██     ▄     ██       ██    ██       ██    ██         ███    
+  ██    ▄█     ██       ██    ██       ██    ██       ▄█▀ ██▄  
+██████████   ▄████▄   ▄████  ████▄     ▀████▀███▄   ▄██▄   ▄██▄
+                                                               
+                                                               
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Introduction ~
+
+Before moving on to the LINUX lets have a small talk ☕️
+An operating system (OS) is system software that manages computer hardware, software resources, and provides common services for computer programs.
+Lets take a look at 1969 its time when ken Thompson and Dennnis Ritchie created unix operating system its was all good but it had one problem the 
+source code was owned by AT and T company when some other created their own software distribution based on unix AT and T sues them this led to the 
+limitatiins to the development. 
+
+To encounter this problen in year 1983 Richard Stallman created GNU( it literally means not unix 😂) project intended to make free and open source 
+replacement to unix in 1992 it included linux under GNU project under general public license, linux was created in 1991 by linus Torwalds a 
+kernel which act as a mediater between hardware and applications, user interact with kernel with the help of shell through command line. in GNU's 
+upcomming years it created may tols and applications like tar, bash just the name of few which can be used by linux kernel that let to revolution 
+in software world.
+
+As it gave freedom to developers tonnes of developers made their contributions and created thousand of linux distro. A distro is a complete operating
+system based on linux kernel which comes with linux kernel packages package-manager Graphic-user-interface. The family tree of linux is huge 
+but have one thing in common - the seed of linux with tools, utilities and freedom provided by GNU. 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+lets understand linux architecture ~
+
+
+                |--------------------------------------------------------------------------------------------------------|
+                |                                                                                                        |
+                |                                                  user                                                  |
+                |                                                                                                        |
+                |      |----------------------------------------|        |----------------------------------------|      |
+                |      |                                                                                          |      |
+                |      |                              Applications / System utilities                             |      |
+                |      |                                                                                          |      |
+                |      |       |--------------------------------------------------------------------------|       |      |
+                |      |       |                                                                          |       |      |
+                |      |       |                                   Shell                                  |       |      |
+                |      |       |                                                                          |       |      |
+                |      |       |       |-----------------------------------------------------------|      |       |      |
+                |      |       |       |                                                           |      |       |      |
+                |      |       |       |                           kernel                          |      |       |      |
+                |      |       |       |                                                           |      |       |      |
+                |      |       |       |       |-------------------------------------------|       |      |       |      |
+                |      |       |       |       |                                           |       |      |       |      |
+                |      |       |       |       |                  Hardware                 |       |      |       |      |
+                |      |       |       |       |                                           |       |      |       |      |
+                |      |       |       |       |-------------------------------------------|       |      |       |      |
+                |      |       |       |                                                           |      |       |      |
+                |      |       |       |-----------------------------------------------------------|      |       |      |
+                |      |       |                                                                          |       |      |
+                |      |       |                                                                          |       |      |
+                |      |       |--------------------------------------------------------------------------|       |      |
+                |      |                                                                                          |      |
+                |      |                                                                                          |      |
+                |      |------------------------------------------------------------------------------------------|      |
+                |                                                                                                        |
+                |                                                                                                        |
+                |--------------------------------------------------------------------------------------------------------| 
+
+
+We use shell to communicate with kernel, which communicates with hardware so, we indirectly communicate with the hardware using shell
+The user cannot communicate with shell using magical spells 😂 hence the user interact with UI(user Interface) to communicate and interact.
+There are mainly two types of User interface -  1.command line user interface 2.Graphic user interface 
+The GUI uses the graphics while the CLI uses the commands aka instructions. 
+
+Now a questions may arise in your mind I have not encountered the command line user interface while using apps like file manager 
+The thing is the those apps are interacting with shell for you under the hood while you use the app. 
+
+To communicate and use the services we have to communicate with shell, as shell is CLI we will be exploring commands and concepts. 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Commands: syntax and type 
+
+Syntax:
+You may notice that the instructions have a multiple parts these pare can be divided into three parts 
+1.command
+2.options 
+3.arguments
+Syntax: command option argument 
+
+Type:
+Commands can be divided into two main type
+1.Builtin - alreaady defiled in your system 
+2.External - not defined by the system but defined by the user 
+
+👨🏽‍💻usage:To know type of command 
+👨🏽‍💻type:type command 
+👨🏽‍💻example:type echo
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Shell
+
+As we discussed earlier we need to interact to with shell via commands so, lets start the shell topic 😉
+
+There are different types of shell available exmaple bash shell corn shell z shell bourne shell (ment for unix) and many more these shells are 
+different and may serve special purpose in specific fields, but all of them have one thing in common that they all act as a medium to interact with 
+kernel. 
+
+👨🏽‍💻usage:To know which shell we are working with 
+👨🏽‍💻type:echo $SHELL
+👨🏽‍💻output:/bin/bash OR /bin/zsh OR /bin/ksh OR any other shell that have been installed onto your system.  
+
+👨🏽‍💻usage:To change shell         note: they must be installed in your system 
+👨🏽‍💻type:chsh -s /bin/[ code name of the shell you wanna switch note: these square brackets are not needed these are just for instructing purpose]
+👨🏽‍💻output:No effect but the shell will be changed but it will came into effect after you close the current session and start a new one.
+👨🏽‍💻example:chsh -s /bin/bash
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+kernel ~
+
+Kernel is major component of an opreating system its sits between hardware and applications/processes it manages resources as efficient as possible 
+Kernel carries out four major tasks 
+
+1.Memory management 
+2.Process management 
+3.Device drivers 
+4.System calls and secuerity
+
+The linux kernel is monolithic it means it carries out multiple tasks all by itself.
+The linux kernel is modular it means it can extend its capiblities using dynamicially loaded kernel modules.
+
+Lets check about kernel info 
+
+👨🏽‍💻usage:To know the kernel info
+👨🏽‍💻type:echo uname
+
+👨🏽‍💻usage:To know the kernel info including the major version and minor version and patch release 
+👨🏽‍💻type:echo uname -a 
+👨🏽‍💻example of a output: 4.15.0-72-generic 
+The first number tells about the current version
+The second number tells about the major version
+The third number tells about patch release 
+The fourth word tells about the type of the kernel this is distro specific 
+
+Kernel and user space ~
+
+The memory is divided into two parts 1.kernel space and user space 
+Kernel space is composed of device drivers and kernel they have unrestricted acecess to the hardware to kernel items like kernel code kernel 
+extensions which executes and provides it services
+User space is the second component of the main memory it have restricted acces to the hardware it comes with all kind of tools and programming 
+languages graphical tools and other things like java ruby c python and docker containers etc.
+All user programs function by manipulating data which comes from hardware like disk, user programs made special request to the kernel call system 
+calls example open or write a file etc, this system call make kernel to provide resourcs to program. 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Command line help ~
+
+👨🏽‍💻usage:To know about the flags of the command  
+👨🏽‍💻type:COMMAND --help
+
+👨🏽‍💻usage:To know about the commmand 
+👨🏽‍💻type:man COMMAND
+👨🏽‍💻More:There are chances that there are more than one type of documentation of a single command in that case provide the section like ~ man 1,2 command 
+These section type can be seen by typing man man command 
+
+👨🏽‍💻usage:To get command from the little description  
+👨🏽‍💻type:apropos SMALL-DESCRIPTION
+👨🏽‍💻More:This command may print extra stuff like manuall of other utilities that contain the description provided to make this more reliable for 
+this -s flag is used for sections for example the command manualls are found from section 1 to 8 so the more reliable way to find connad is 
+apropos -s 1,8 SMALL-DESCRIPTION
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Linux boot sequence ~
+Although you have have booted your system and are working on it 🌚 lets discusss a steps involved in this task 
+
+Linux boot sequence can be divided into four major groups ~
+1. BIOS post
+2. GRUB loader/ Boot loader 
+3. Kernel initilization
+4. INTIT process (systemd)
+
+BIOS POST ~
+POST(Power On Self Test) in this stage BIOS runs a post test to insure that all the hardware components attached to the device are working correctly
+if POST fails compuetr may not be operatble and computer will not move to second step of boot process. 
+
+Boot loader ~
+After the POST sequence BIOS load and executes the boot code from the hard disk of the boot device, located in the first sector of the hard disk  
+In linux this code os located in the /boot file system The boot loader provide user with the boot screen often  with multiple os to boot into.
+Once the choice is provided the boot loader loades the kernel into the memory. Supplying with parameters and handling the control to the kernel 
+Example of the boot loader is GRUB 2(Grand Unified Boot Loader version 2) it is primary boot loader for most of the linux distributions.
+
+Kernel Initilization ~
+The kernel loaded into the memory is usually decompressed then the kernel loads into the memory and starts executing during this time kernel carries 
+out tasks such as initilizing hardware, cpu sheduling and memory management etc.
+
+INIT ~
+When the kernel gets compleateately operational kernel goes for INIT process, this process sets up user space and processes needed for user environment.
+
+In most of the linux distributions INIT process later calls the systemd, it is responsible for bringing linux host into the useable space, mounting
+filesystems starting and managing system services like systemd and sys5. Systemd has one advantage than sys5 is that it paralizes the services 
+which are not necessary thus decreasing the startup time 
+
+👨🏽‍💻usage:To know the the INIT process used 
+👨🏽‍💻type:ls -l /sbin/init
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Package Manager ~
+
+Package:
+A package is a archive/files all the files that are required by a particular software. A package manager is a software that provides package + 
+dependencies along with tasks like ~ Checking authenticity and integrity, Simplying the package management process, Grouping packages, Managing dependicies 
+
+Every distributions may have a seperate package manager because distributions may differ in basic structure thus every different structure require 
+different package manager Just like we talked earlier there are around a thousand of linux distributions but the big daddy of these distributions are 
+DPKG/APT and RPM/YUM. DPKG is used by linux os like ubantu, debian, arch linux linux mint etc. RPM is used bu RHEL,fedora,cent os etc. The most usual package 
+manager used by mac os is home brew. 
+
+RPM(red hat package manager) ~
+
+                                   --------------------------------------------
+                                   |  install   |   rpm -ivh packagename.rpm  |
+                                   |  unistall  |   rpm -e packagename.rpm    |
+                                   |  upgrade   |   rpm -Uvh packagename.rpm  |
+                                   |  query     |   rpm -q packagename.rpm    |
+                                   |  verify    |   rpm -Vf path-to-file      |
+                                   --------------------------------------------
+
+YUM(yellow dog updater modifier) ~
+
+Despite all of these RPM does not manage dependencies by itself so we need a better package manager hopefully there a package manager called YUM this 
+package manager works on RPM based distros It is a high level package manager but still works with RPM under the hood. YUM deals with automatic 
+dependencies management. 
+
+To install dependencies it works with dependencies packages they may stored on local or are available on remote server accessed via server protocalls.
+In your loacal system you can find those dependicies file on etc/yum.repos.d/dependencies-files you can adde any dependicies file here in case you wanna 
+install unofficial updates of any modifications.
+
+👨🏽‍💻usage:To list all the installed repos
+👨🏽‍💻type:yum repolist
+
+👨🏽‍💻usage:To find what dependencies is provided to a application 
+👨🏽‍💻type:yum provides DESIRED-SERVICE-OR-UTILITY 
+
+                                   ----------------------------------------------
+                                   |  install   |   yum install packagename     |
+                                   |  unistall  |   yum remove packagename      |
+                                   |  update    |   yum update packagename      |
+                                   ----------------------------------------------
+
+Steps involved in installing a package ~
+yum first checks the transaction check it check repositories of that package it also check if any of the dependincy package installed in system 
+or it needs to be upgraded. After all that it displays transaction summary and asks the choice to further go on. After that choice yum downloads 
+the packages.
+
+DPKG(debian package manager) ~
+
+                                   --------------------------------------------
+                                   |  install   |   dpkg -i packagename.deb   |
+                                   |  unistall  |   dpkg -r packagename.deb   |
+                                   |   list     |   dpkg -l packagename       |
+                                   |  status    |   dpkg -s packagename       |
+                                   |  verify    |   dpkg -p path to package   |
+                                   --------------------------------------------
+
+Just like RPM it does not handle dependencies on its own so a better package manager is required just like YUM which works with dpkg under the hood.
+
+apt(advance package manager) ~
+To install dependencies it can be done by packages stored on local or it may install from remote server by connection using server protocalls its 
+packages can be find at /etc/sources.list/ 
+
+                                   ---------------------------------------------------
+                                   |  install        |   apt install packagename     |
+                                   |  unistall       |   apt remove packagename      |
+                                   |  referesh repo  |   apt update                  |
+                                   | install upgrade |   apt upgrade                 |
+                                   |  search         |   apt search packagename      |
+                                   |  upgrade 2.0    |   apt edit-sources            |
+                                   ---------------------------------------------------
+                                  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+File 
+
+Types ~
+
+There's a commom phrase in linux that everything is a file so it is necessary to get really handy on em' 
+
+
+                                                                         Files 
+                                                                           |
+                                                                           |
+                                  ------------------------------------------------------------------------------------ 
+                                  |                                        |                                         |
+                                  |                                        |                                         |
+                              Regular                                   special                                   Directory
+                                                                           |
+                                                                           |
+                                 ---------------------------------------------------------------------------------------
+                                 |                    |                     |                     |                    | 
+                                 |                    |                     |                     |                    |
+                             Character              Block                 Links                Socket                Pipe
+                                                                            |
+                                                                            |
+                                                            --------------------------------
+                                                            |                              |
+                                                            |                              |
+                                                          Hard                            Soft    
+
+File in linux are divided into 3 types 
+1.Regular
+2.Directory
+3.Special
+
+1.Regular files are the most basic files in linux they are data files or media files or scripts 
+
+2.Directories are the files that store other files or directories 
+
+3.Special files are further divided into 5 types 
+
+3.1 Character files - these files represent devices under /dev that allows OS to communicate with IO devices   example - mouse
+
+3.2 Block files - These files represent block devices under /dev a block device read from and write in block/chunk of data  example - hard disk, ram 
+
+3.3 Links - these files are the way to associate two or more file name with same set of file data there are two types of links 
+
+3.3.1 Hard Link - two or more files name that share the same block of data on a physical disk although they behave as a independent files deleting one 
+link will delete the data 
+
+3.3.2 Soft link - They act as pointers to another files deleting a soft link will not delete the actual file 
+Soft link and hardlink 
+
+File points to the inode and innode points to the group of data. There might be chances that one or more that one person wanna access same data 
+but might lie in different directories in that case the one usual way is to copy all the data form orignal to source that will result in storage
+blunder in that case links are highly useful one or more user can have access to same data without blundering the storage 
+
+👨🏽‍💻usage:To create a hard link
+👨🏽‍💻type:ln PATH_TO_OLD_DATA PATH_TO_NEW_LINK
+👨🏽‍💻output:Link will be created but its hard manipulation of data on one side will not result in changes on both sides, talking about how it workds
+both the names points to same inode, hardlink limitations are ~ Hard links can only be formed for files not directories, file system dependincy
+
+Soft link points to the path to the file all the stuff for making soft link is almost same but with a difference of -s flag
+to view the true path of the link created readlink command is used permissions of softlink are kinda useless 
+
+3.4 Socket - These file enable communication between two processes 
+
+3.5 named pipes - These files are allows one process as the input to another Data flow in pipe is unidirectional 
+
+File types and their identifiers 
+
+  |------------------------------------|
+  |  File               | identifiers  |
+  |  Directory          |    d         |
+  |  Regular            |    -         |
+  |  Link               |    l         |
+  |  Socket             |    s         |
+  |  Pipe               |    p         |
+  |  Character device   |    c         |
+  |------------------------------------|
+
+Hierchy of Directories
+
+                                                                          /(root)
+                                                                             |
+                                                                             |                                       
+      ------------------------------------------------------------------------------------------------------------------------------------------ 
+     |           |           |           |           |           |           |           |           |           |         |          |       |
+     |           |           |           |           |           |           |           |           |           |         |          |       |
+   /bin        /boot       /dev        /etc        /home(~)     /lib       /media       /mnt        /opt        /tmp      /usr       /var   /sbin
+
+
+/bin ~ This file contains the basic executeable linux shell commands like ps chmod etc 
+/boot ~ This directory contains the files related to system like boot loader, kernel and boot image etc.
+/dev ~ This directory this directory contains the dvice files 
+/etc ~ This directory contains the most important access control files like passwd sudoers profile.d environment limits.config etc 
+/home ~ This directory contains the user home directory 
+/lib ~ This directory contains the system libraries like java perl frameworks
+/media ~ All the removable media that is being plugged shows in this directory media is mpunted automaticially
+/mnt ~ mnt is used by system administrators to mount the files 
+/opt ~ This directory is used to store third party softwares 
+/tmp ~ This directory contains the temporary files 
+/usr ~ This directory contains the user programs 
+/var ~ This directory contains the variable files 
+/sbin ~ This directory contains the system binaries 
+
+There are two types of path one is relative path second is absolute path. Relative path is just path of file inside the currect working directory 
+while absolute path include all the ancestors of the current working directory.
+
+👨🏽‍💻usage:To check the file type 
+👨🏽‍💻type:file FILENAME-INCLUDING-FILE-FORMAT-IF-PRESENT
+
+👨🏽‍💻usage:To create a file 
+👨🏽‍💻type:touch FILE-NAME.FILE-FORMAT
+
+👨🏽‍💻usage:To go directly to home directory 
+👨🏽‍💻type:     cd      cd ~      cd $HOME   
+
+👨🏽‍💻usage:To check the current directory you are on 
+👨🏽‍💻type:pwd
+
+👨🏽‍💻usage:To list the content of current working directory
+👨🏽‍💻type:ls
+👨🏽‍💻note:Multiple options can be used with this command like l for long list a for mentioning hidden files r for reverse order example ls -la
+
+👨🏽‍💻usage:To switch to another directory present in the current working directory 
+👨🏽‍💻type:cd DIRECTORY-NAME
+
+👨🏽‍💻usage:To switch to parent of the current working directory  to traverse back of the hiearchy
+👨🏽‍💻type:cd ..
+
+👨🏽‍💻usage:To create directory
+👨🏽‍💻type:mkdir DIRECTORY-NAME-AS-PER-AS-YOUR-CHOICE
+
+👨🏽‍💻usage:To delete directory
+👨🏽‍💻type:rm -r DIRECTORY-NAME-YOU-WANNA-DELETE
+
+👨🏽‍💻usage:To copy a file or directory
+👨🏽‍💻type:cp loation of the file which is to be copied location of parent directory where it is to be copied 
+👨🏽‍💻output:The file or dictory will be copied at the same time 
+👨🏽‍💻example:cp a/b/c/d  /a/b/c/
+👨🏽‍💻note: There might be a case when there are so much directory/file under the copying directory/file in that case -r can be used.
+
+👨🏽‍💻usage:To move a file or directory
+👨🏽‍💻type:mv loation of the file which is to be transfered location of parent directory where it is to be transfered
+👨🏽‍💻output:The file or dictory will be moved at the same time 
+👨🏽‍💻example:rmdir mv a/b/c/4  /1/2/3/
+👨🏽‍💻note: If the both location are same but the file name is different in that case the moving file or directory will be renamed as per as second name
+
+👨🏽‍💻usage:To view the meta data of the file 
+👨🏽‍💻type:stat FILENAME.FILEFORMAT
+
+Console base text editors and viewers 
+
+* Pagers are used to view multiple text pages at a time 
+* less and more are some of the pagers that are easily found in every linux distro  
+
+👨🏽‍💻usage:To open document with the less pager 
+👨🏽‍💻type:less FILENAME.FILEFORMAT
+👨🏽‍💻note: Use arrow key to traverse up and down 
+👨🏽‍💻note: Use /SERACH-DATA to search the data in that file to remove the case sensitivity press i 
+👨🏽‍💻note: press q to quit 
+
+👨🏽‍💻usage:To open document with the more pager 
+👨🏽‍💻type:more FILENAME.FILEFORMAT
+👨🏽‍💻note: Use spacebar to traverse up and down 
+👨🏽‍💻note: press q to quit 
+
+👨🏽‍💻usage:To see the contents of a file in vi editor 
+👨🏽‍💻type:vi FILENAME.FILEFORMAT
+👨🏽‍💻note: To search the text use /SEARCH-DATA to search the data in editor to remove its case sensitivity use /SEARCH-DATA\c
+
+The legendary vi editor have three modes 
+Command - the default mode in vi editor is command move we can type command such as cp mv etc 
+Insert  - this mode allows us to edit data aka add test delete text 
+Last line - After getting our work done press esc key and : to switch to last line ~~ the escape key makes user go into command mode and :
+takes user to last line. after reaching the last line we have options either to save/discard and exit vi editor 
+
+Command mode : 
+Press escape key for entering into command mode 
+Lets gets handy with the comand mode ~
+arrow up/k     for cursor up 
+arrow down/j   for cursor down
+arrow left/h   for cursor left 
+arrow right/l  for cursor right
+To copy and paste a line just press y two times on the first alphabet of the desired line and press p on desired place where you want to paste it.
+To delete a letter just press x on the highlighted cursor
+To delete the desired line just press d two times on the first alphabet of that line 
+To delete the number of lines including the current type d n d   (n is the number of lines)
+To redo the task press ctrl+r 
+To undo the task press u 
+To move cursor to the searched or desired part press /sequence-of-Character to search pattern above type ?sequence-of-Character
+To find the above pattern above he current line press N and for the below press n
+
+Insert mode :
+Press i to enter into insert mode or o or a 
+To make any changes first going into command mode is necessary 
+To save the changes after editing press ~ escape : w
+To save the changes and extit press ~ escape : wq 
+To exit without making changes press ~ escape : q !
+To search text use /STRING type of syntax 
+To search despite case sensitiveness use /STRING\c syntax 
+To reach specific line press esc :LINE-NUMBER
+
+
+Standard Data streams and data manipulation @i/o 
+
+* A Linux stream is data traveling in a Linux shell from one process to another through a pipe, or from one file to another as a redirect.
+* Streams can travel through several Linux stream-pipe connections of incremental commands to accomplish administrative tasks.
+* Standard streams are interconnected input output communication channels 
+* Standard input -> All the data that are given via shell aka input 
+* Standard output -> All the output generated and displayed onto the console 
+* Standard error -> All the error generated 
+* The data in these streams can be redirected it means the destination of the data flowing in these streams can be changed 
+* Input output can be redirected with the help of 1> opreator [> for overwrite and >> for append]
+* Error data stream can be redirected with the help of 2> 
+* Input during the run time of the program can be redirected with the help of < example INPUT-NEEDING-COMMAND < FILENAME.FILEFORMAT
+* To redirect the errors and the output use > as regular but in the end of the file use 2>&1
+* We can use pipes to manipulate the data to be output example cat file.txt | sort 
+* are are tonnes of sort kinda utilities example column -t , uniq (remove adjacent duplicates)
+* sed is the steram editor it can be used to replace the data 
+* cut can be used to extract data from the file 
+* diff is the command line utility to compare the files 
+
+
+                                                            Standard data Streams
+                                                                     |
+                                                                     |
+                                              ----------------------------------------------
+                                              |                      |                     |
+                                              |                      |                     |
+                                        Standard Input        Standard output         Standard Error
+
+
+👨🏽‍💻usage:Example of input output redirection 
+👨🏽‍💻:Suppose there are two files file1.txt and file2.txt, to simply redirect the input to the file1.txt ~ cat "HELLO" > file1.txt 
+now the file1.txt have HELLO as its data we can output this data to the console ~ cat file1.txt , now we want to redirect the output 
+of the data of file1.txt to file2.txt ~ cat file1.txt >> file2.txt, suppose we made a typo during the cat file1.txt as cat file.txt 
+the error will be generated ~ cat: file.txt: No such file or directory , we can redirect this error by using 2 before the diamond operator 
+~ cat file.txt 2>>  file2.txt , now if we output the conent of the file 2 it would be 
+HELLO
+cat: file.txt: No such file or directory
+
+👨🏽‍💻usage:To check the status of te command last input
+👨🏽‍💻type:echo $?
+
+Here are some of the value related to the errors that can be generated by the error stream 
+0: success
+1: generic or unspecified error
+2: missing command or file
+126: permission problem or command is not executable
+127: command not found
+128: invalid argument to exit command
+130: command terminated by signal
+137: command terminated by a signal with a value of 9 (usually means the command was killed)
+139: segmentation fault or invalid memory reference
+141: pipe broken
+
+👨🏽‍💻usage:To output the data of the file top to bottom 
+👨🏽‍💻type:cat FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To output the data of the file bottom to top
+👨🏽‍💻type:tac FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To print the first n lines of the file 
+👨🏽‍💻type:head -n NUMBER-OF-LINES FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To print the last n lines of the file 
+👨🏽‍💻type:tail -n NUMBER-OF-LINES FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To replace data with newdata
+👨🏽‍💻type:sed 's/DATA/NEWDATA/g' FILENAME.FILEFORMAT 
+👨🏽‍💻:Use -i (--in-place) to edit the file at the same time 
+
+👨🏽‍💻usage:To extract data from the file 
+👨🏽‍💻type:cut -d 'DELIMETER' -f NUMBER-OF-FIELD FILENAME.FILEFORMAT 
+
+👨🏽‍💻usage:To find the difference between files 
+👨🏽‍💻type:diff file1 file2 
+👨🏽‍💻:Identical lines are not shown here 
+👨🏽‍💻: To get the good view use -c flag using this the same lines are shown normally while other with ! prefix
+👨🏽‍💻: -y flag can be used for side by side comparison 
+👨🏽‍💻:using sdiff the changed lines are marked with pipe
+👨🏽‍💻:1c1 kinda words will appear these tells us that line 1 on file 1 has been changed on line 1 file 2 
+👨🏽‍💻: < This tells us that the content appear only in first file whle > telle us only exist only in another file
+
+
+File permissions
+
+                                                               File permissions
+                                                                        |
+                                       ------------------------------------------------------------------------
+                                       |                      |                           |                   |
+                                       |                      |                           |                   |
+                                     Read(4)               Write(3)                   Execute(1)          SGID & SUID
+
+* Action on files can be done by user, group and others. Actions include reading, writing and execution if possible.
+* The permissions of the file can be modified by the user who owns it.
+* chmod is the command line utility to manipulate the file permissions 
+* setfacl is the command line utility for managing exceptional file permission for user and groups its package ~ acl
+  for user: setfal --modify user:DESIRED-USER-NAME:rwx FILENAME.FILEFORMAT
+  for group: setfal --modify group:DESIRED-GROUP-NAME:rwx FILENAME.FILEFORMAT
+  for setting max permissions: setfal --modify mask:rwx FILENAME.FILEFORMAT
+  for getting the access control list: getfacl FILENAME.FILEFORMAT and 
+  use --- for no permissions --recursive for whole directory 
+* setattr is the command line utilities for advance file permissions if in case of problems lsattr can be used 
+
+👨🏽‍💻usage:To modify permissions of the file  
+👨🏽‍💻type:chmod USER--WHOSE-PERMISSIONS-ARE-MODIFIED+/-PERMISSIONS FILENAME.FILEFORMAT
+👨🏽‍💻output:Permissions will be modified 
+👨🏽‍💻example:chmod u+rwx nuclearcodes.txt
+👨🏽‍💻note:Taking example of the above command this + represent that permissions are provided in case of removal of permissions - is used, similarly 
+in the above example u represent the user aka whose permissions are modified this can also be group represented by g or others represented by o or 
+can be together at the same time. example chmod go+rwx nuclearcode.txt these permissions cab be grouped by using a comma example ~
+chmod g+rwx,o-rwx,u+rwx nuclearcodes.txt 
+
+There if you wanna apply same permissions to all types of account at the same ti e use octal example ~
+chmod 777 FILENAME.FILEFORMAT       to provide read write and execute permissions to all kinds of account 
+chmod 555 FILENAME.FILEFORMAT       to provide read and execute permissions to all kinds of account 
+chmod 660 FILENAME.FILEFORMAT       to provide read and write access to owner and no access to others 
+chmod 750 FILENAME.FILEFORMAT       to provide all permissions to user and read and write permissions to group and no permissions to other 
+
+In all of these when there are set where the file is executed, it will be exeuted as the owner or group set not by the person who is executing
+SUID (Single user identification bit)
+All of these are set up like normal permissions but there's an extra digit at the front  
+SUID         4      s 
+SGID         2      s
+Sticky bit   1      t
+Sticky bit are usually set on directories that are shared between people 
+Setting sticky bit on the directory only user can manipulate all the stuff of the directory
+These special permissions can be set using the following synatx 
+chmod u+s FILE for SUID
+chmod g+s FILE for SGID
+chmod o+t FILE for Sticky bit  
+
+File ownership ~ 
+
+👨🏽‍💻usage:To change the ownership to the user and the group of the file 
+👨🏽‍💻type:chown user-to-transer-ownership:group-to-transfer-ownership  FILENAME.FILEFORMAT
+👨🏽‍💻output:Ownership will be provided to the provided user and group 
+👨🏽‍💻example:chown India:asia nuclearcodes.txt
+
+👨🏽‍💻usage:To change the user ownership of the file 
+👨🏽‍💻type:chown new-user FILENAME.FILEFORMAT
+👨🏽‍💻output:User will also get the ownership of the file and the ownership of the group remain default
+👨🏽‍💻example:chown India nukes.txt
+
+👨🏽‍💻usage:To change group ownership of the file 
+👨🏽‍💻type:chgrp group-name FILENAME.FILEFORMAT
+👨🏽‍💻output:Ownership the file will be changed to the group-name provided
+👨🏽‍💻example:chgrp asia India
+👨🏽‍💻Note:We can only change the group ownership of the file of those groups that user(owner) is part of 
+
+Search data in files 
+
+* grep is a comma line utility to search for data in files 
+
+👨🏽‍💻usage:To search data in file 
+👨🏽‍💻type: grep 'DATA' /DIRECTORY/FILENAME.FILEFORMAT
+👨🏽‍💻note: -i flag can be use to ignore case 
+👨🏽‍💻note: -r flag can be used for searching in sub directories recursively 
+👨🏽‍💻note: -v flag can be used for verbose(invert) results 
+👨🏽‍💻note: -w flag can be used for searching only for words 
+👨🏽‍💻note: -o flag can be used for only for resultant
+ 
+👨🏽‍💻usage:To print the n number of lines above the desired index being completely independent of the pattern searched including the searched data
+👨🏽‍💻type:grep -a(NUMBER-OF-LINES-YOU-WANNA-PRINT-ABOVE) data FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To print the n number of lines below the desired index being completely independent of the pattern searched including the searched data
+👨🏽‍💻type:grep -b(NUMBER-OF-LINES-YOU-WANNA-PRINT-BELOW) data FILENAME.FILEFORMAT
+
+Search for files 
+
+* Find is a command line utility to search file with tonnes of parameter options like format size type etc 
+* -o flag can be used to make a or expression 
+* -not flag can be used to make a not expression \!
+* locate command succeed by FILENAME.FILEFORMAT can also be used for searching the files 
+
+👨🏽‍💻usage:To search for a file 
+👨🏽‍💻type: find /DIRECTORY-IN-WHICH-YOU-WANNA-SEARCH/ -name FILENAME.FILEFORMAT
+👨🏽‍💻note: -i flag can be use to ignore case 
+
+👨🏽‍💻usage:To search for a file starting with a desired letter 
+👨🏽‍💻type:find /DIRECTORY-IN-WHICH-YOU-WANNA-SEARCH/ -iname "LETTER*"
+
+👨🏽‍💻usage:To search for a file on the basics of time 
+👨🏽‍💻type:find /DIRECTORY-IN-WHICH-YOU-WANNA-SEARCH/ -mmin 1
+👨🏽‍💻note: - sign is used to check files that are modified under last n minutes 
+👨🏽‍💻note: + sign can be used to check files that are modified before n minutes 
+👨🏽‍💻note: mtime can be used for searching file on the basics of days 1 represent 24 hours 
+👨🏽‍💻note: cmin can be used to search for file on the basics of the metadata 
+
+👨🏽‍💻usage:To search for a file on the basics of their size 
+👨🏽‍💻type: find /DIRECTORY-IN-WHICH-YOU-WANNA-SEARCH/ -size DESIRED-SIZE
+👨🏽‍💻note: c for bytes k for kilobytes M for megabytes and G for gigabytes 
+👨🏽‍💻note: + sign can be used to search for files greated then the size provided 
+👨🏽‍💻note: - sign can be used to search for files smaller then the size provided 
+
+👨🏽‍💻usage:To search for a file on the basics of permissions 
+👨🏽‍💻type: find /DIRECTORY-IN-WHICH-YOU-WANNA-SEARCH/ -perm PERMISSIONS-IN-OCTAL
+👨🏽‍💻note: instaed of octal u=rw,g=w,o=rwx format can also be used 
+👨🏽‍💻note: - sign can be used for least permissions 
+👨🏽‍💻note: / sign can be used for any of the permissions provided
+
+Expressions to analyze text 
+
+There may be chances that you require specifice text anatomy in that case expressions can be useful
+Regs operators ~ | ^ $ . * + ? () {} [] [^] 
+^ This can be used to search lines or word starting with the characters provided 
+$ This can be used to search lines or word ending with the character provided
+. This can be used as a character fill in the blank aka this . character between characters to search dots use \. aka escaping for searching 
+multiple character in between use .*
+* This can be used to check the character pre either omitted nonce to n times to prevent nonce use /+
+
+File compression and archival 
+
+File compression 
+
+* Directories cannot be compressed thus we have to archive them to compress them 
+* At least bzip gzip and xz file compressing utilities are found in every linux system 
+* The file compressed using bzip2 will have .bz2 extention 
+* The file compressed using gzip will have .gz extention 
+* The file compressed using xz will have the .xz extention
+* To decompress the file just used --decompress flag succeed with the compressed file or use selective utilities  
+* While using these utilities orignial files are compressed to make them unaffected/make compressed file different use --keep flag 
+
+👨🏽‍💻usage:To compress a file using bzip
+👨🏽‍💻type:bzip2 FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To decompress a bzip2 file 
+👨🏽‍💻type:bunzip2 FILENAME.FILEFORMAT.bz2
+
+👨🏽‍💻usage:To compress a file using gzip
+👨🏽‍💻type:gzip FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To decompress a file using gzip
+👨🏽‍💻type:gunzip FILENAME.FILEFORMAT.gz
+
+👨🏽‍💻usage:To compress a file using xz
+👨🏽‍💻type:xz FILENAME.FILEFORMAT
+
+👨🏽‍💻usage:To decompress a xz file 
+👨🏽‍💻type:unxz FILENAME.FILEFORMAT.xz
+
+File archival 
+
+* tar is a command line utility to archive the data 
+* The new archived file is called tarball 
+* While using compression with archival the new name of the new tar file must succeed with the compression format used 
+* It is adviced to used to use compression flag before the file flag
+
+👨🏽‍💻usage:To archive data 
+👨🏽‍💻type:tar -cf DESIRED-COMPRESSED-FINAL-FILE-NAME.tar file1 file2 file3 
+👨🏽‍💻output:All data will be archived and made into a new file named given by you with an extension of .tar 
+👨🏽‍💻note: -c option is used for compressing files and -f is used for specifying the name of compressed file  
+👨🏽‍💻note: to view the content of the tarball use -tf flag combination succeed by the tarfile 
+👨🏽‍💻note: -rf flad is same as -cf 
+👨🏽‍💻note: -xf flag is used to extract the files 
+👨🏽‍💻note: --directory succeed by the path to the desired directory  can be used to extract the content in the desired directory 
+👨🏽‍💻note: use sudo to make sure the file permissions are preversed or -p flag can be used (--preserve-permissions)
+👨🏽‍💻note: -a flag can be used for auto compress (--auto-compress)
+👨🏽‍💻note: -z flag can be used for gzip compression with archival (--gzip)
+👨🏽‍💻note: -j flag can be used for bzip2 compression with archival (--bzip2)
+👨🏽‍💻note: -J flag can be used for xz compression with archival  (--xz)
+👨🏽‍💻note: -Z flag can be used for compression with archival (--compress)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Users and Group Management 
+
+Every Linux user have an account associated with it may also have a directory same as one's name under home directory. It also have a Unique ID and
+a Group ID these GID and UID are used while creating and manipulating files. Similarly there are Groups in Linux which are just represent multiple 
+users. For example if a new file is created by the user with group x all the member will be able to access that file.
+
+
+Account in linux are mainly of 4 types ~
+
+
+                                                                    Accounts types in linux
+                                                                              |
+                                                                              |
+                                                -----------------------------------------------------------
+                                                |                 |                    |                  |
+                                                |                 |                    |                  |
+                                           Super User      Servive Accounts      System Accounts     User Accounts 
+
+
+
+1.Super Accounts ~ This account have all the powers and the permissions of the system this is mostly known as root it have an UID = 0.
+2.Service Accounts ~ These account are used by services.
+3.System Accounts ~ These accounts are used by the system they have an UID of <100 or 500-1000.
+4.User Accounts ~ These are the accounts used by the user
+
+
+Quick notes ~ 
+
+* All the details of the user are stored in /etc/passwd file.
+* When the user is added to the system all the files form /etc/skel are copied to new user home directory.
+* The defaults of can be explored under /etc/login.defs or by typing command useradd --defaults
+* All the global environment variable are found under /etc/environment can be used by the new user as well
+* Scripts presented in the /etc/profile.d will be executed every time user logins 
+* User's limits to the system resources can be set by manipulating the file /etc/limits.config 
+* When the user is added to the system a new group is also created and added to the system(same name as of user's) aka primary Group
+* When a user is added his home directory is also created under home/
+* To login new user must have a passwd this can set by typing passwd USER-NAME
+* User can login by typing su USER-NAME and later entering the set passwd 
+* usermod is the command line utility to modify user account settings 
+* chage is the command line utility to manage user password 
+* userdel is used to delete user-accounts 
+* useradd is used to add user-accounts   
+
+Commands
+
+👨🏽‍💻usage:To get to know about account which is logged into the system 
+👨🏽‍💻type:whoami
+
+👨🏽‍💻usage:To get to know about account which is logged last into the system 
+👨🏽‍💻type:last
+
+👨🏽‍💻usage:To add another user to the system normalally with default settings 
+👨🏽‍💻type:useradd DESIRED-USER-NAME
+
+👨🏽‍💻usage:To add another user to the system with custom settings 
+👨🏽‍💻type:useradd -u CUSTOM-UID -g CUSTOM-GID -d /CUSTOM-DIRECTORY -s /bin/CUSTOM-SHELL -c "CUSTOM-COMMNETS" DESIRED-USER-NAME 
+
+-u is used for giving custom UID to user example 69,420,1945,2002 aka user defined (--uid)
+-g is used for giving custom GID to user example 69,420,1945,2002 aka user defined
+-d is used for providing the custom home directory example /home/users/myselfakashagarwal (--home-dir)
+-s is used for providing the default shell example /bin/bash, /bin/sh, /bin/zsh (--shell)
+-c is used for custom comments 
+-e is used for expiration date with format YEAR-MONTH-DAY
+-G is used for creating a user with multiple secondary groups 
+--system is used for adding system account 
+
+👨🏽‍💻usage:To get user information
+👨🏽‍💻type:id
+
+👨🏽‍💻usage:To remove user from the system excluding its home directory 
+👨🏽‍💻type:userdel DESIRED-USER-NAME 
+
+👨🏽‍💻usage:To remove user from the system including its home directory 
+👨🏽‍💻type:userdel --remove DESIRED-USER-NAME 
+
+👨🏽‍💻usage: to change the home directory of the user 
+👨🏽‍💻type: usermod -d /PATH-TO-NEW-HOME-DIRECTORY -m USERMANE
+👨🏽‍💻Note:instead of -d --home can be used and for -m --move-home can be used 
+
+👨🏽‍💻usage:To change user name 
+👨🏽‍💻type:usermod --login NEW-USER-NAME OLD-USER-NAME
+👨🏽‍💻Note:-l can can be used istead of --login
+
+👨🏽‍💻usage:To change user login shell
+👨🏽‍💻type:usermod --shell /bin/OTHER-SHELL USER-NAME 
+👨🏽‍💻Note:-s can be used insted of --login 
+
+👨🏽‍💻usage:To lock the account without delating it 
+👨🏽‍💻type:usermod -L username 
+👨🏽‍💻Note:Instead of -L --lock can be used 
+
+👨🏽‍💻usage:To unlock the account 
+👨🏽‍💻type: usermod --ulock USER-NAME 
+👨🏽‍💻Note:Instead of --unlock -U can be used 
+
+👨🏽‍💻usage:To setup account expiration date  
+👨🏽‍💻type:usermod --expiredate YEAR-MONTH-DATE USERNAME 
+👨🏽‍💻Note:instead of --expiredate -e can be used to disable expiration date use "" as the date 
+
+👨🏽‍💻usage:To change the primary group of the user 
+👨🏽‍💻type:usermod -g NEW-GROUP-NAME USER-NAME  
+👨🏽‍💻Note: It is recommeded to use --gid insted of -g as G is used for changing secondary groups 
+
+👨🏽‍💻usage:To change the expiration date of the user password 
+👨🏽‍💻type:chage --lastday NUMBER-OF-DAYS USER-NAME 
+👨🏽‍💻Note:Instead of --lastday -d can be used - can be user for never password expiration
+
+👨🏽‍💻usage:To reset user password exery ndays 
+👨🏽‍💻type:chage --maxdays NUMBER-OF-DAYS USER-NAME 
+👨🏽‍💻Note:-M can be used insted of --maxdays
+
+👨🏽‍💻usage:To view the date of the expiry date of the password 
+👨🏽‍💻type:chage --list USER-NAME 
+👨🏽‍💻Note:-l can be used insted of --list 
+
+👨🏽‍💻usage:To create a group
+👨🏽‍💻type:groupadd groupname 
+
+👨🏽‍💻usage:To delete a group
+👨🏽‍💻type:groupdel groupname 
+
+👨🏽‍💻usage:To add a user to group
+👨🏽‍💻type:gpasswd --add USER-NAME GROUP-NAME 
+👨🏽‍💻note: -a can be used insted of --add 
+
+👨🏽‍💻usage:To delete a user to group
+👨🏽‍💻type:gpasswd --delete USER-NAME GROUP-NAME 
+👨🏽‍💻note: -d can be used insted of --delete
+
+👨🏽‍💻usage:To rename a group 
+👨🏽‍💻type:groupmod --new-name NEW-NAME OLD-NAME 
+👨🏽‍💻note: -n can be used 
+
+👨🏽‍💻usage:To change the group id  
+👨🏽‍💻type:groupmod --gid NEW-ID OLD-ID 
+
+👨🏽‍💻usage:To get the limits information about the user 
+👨🏽‍💻type:ulimit -a 
+
+Limits ~
+We can put limits on users what and how much resources they can use To set such kinda limits we cvan edit limits.config file 
+Usually there are four fields limits can be seen using ulimit -a command printing the various flags the limits can be set from these flags
+for example to set limit on max user processes type ulimit -u NUMBER-OF-DESIRED-PROCESSES
+
+domain - FOR WHOM LIMITS ARE FOR 
+For users just simply type the name 
+For groups use @ before group name 
+For everyone use * this can be used as default limitatiins userlimit can override * limits 
+
+type - WHAT TYPE OF LIMITS ARE IMPOSED these are of three types 
+hard - this limit cannot be overridden by any user 
+soft - User can increase its limits  
+dash - This specifies this is both hard limit and soft limit 
+
+item - ON WHAT ITEM LINITS ARE IMPOSED 
+There are variety of items for example nproc aka maximum number of processes a user can run in current session nproc maxlogins
+fsize aka maximum filesize created per session the value is in kilobytes 
+cpu aka muximum time cpu can be used the value is in minutes 
+
+value - HOW MUCH RESOURCE IS PROVIDED 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Operations on operatring system 
+
+Processes 
+
+* Process is the exam in execution aka program in the memory that can be running or waiting it may accquire resources like cpu, io etc 
+* Every process have its process id and parent process id init is the first process with pid 1
+* kernel processes are wrapped in squarebrackets they run in the privilage area 
+* Process niceness is the value how nice the process is to the other processes range -20 to 19
+* Various signals can be given to processes to manipulate their state the signals will be applicable to process that are user related 
+* There are various signals that are sent to processes 
+
+👨🏽‍💻usage:To list all the processes with the most memory used  
+👨🏽‍💻type:top 
+
+👨🏽‍💻usage:To list all the processes running in current bash session 
+👨🏽‍💻type: ps
+👨🏽‍💻note: To check the specific process just type the pid after the ps 
+👨🏽‍💻note: To check the process with the resources allocated use u before the pid 
+👨🏽‍💻note: To list all the process started by the user use ps -U UERR-NAME after the u 
+👨🏽‍💻note: To list all the process with their nice value type: ps l
+👨🏽‍💻note: To list all the process that are parent processes type: ps fax
+👨🏽‍💻note: To list the hiearchy of the processes type: pstree
+
+👨🏽‍💻usage:To check the process with specific name 
+👨🏽‍💻type: pgrep -a PROCESS-NAME 
+
+👨🏽‍💻usage:To list all the processes at the command time stamp 
+👨🏽‍💻type: ps aux
+
+👨🏽‍💻usage:To assign the nice value to the process
+👨🏽‍💻type: nice -n VALUE PROCESS 
+
+👨🏽‍💻usage:To assign the nice value to the existing process
+👨🏽‍💻type: renice  VALUE PROCESS-ID 
+
+👨🏽‍💻usage:To know all the signals 
+👨🏽‍💻type:Kill -l 
+
+Target 
+
+* Systemd is the system and service manager for linux OS its not necessary that every system have systemd. Systemctl is the command line tool 
+  used to manage systemd services. Location /usr/lib/
+* Target in nutshell can be defined as the user interface implemented on the system or the interface OS boots into there are total 7 target 0 - 7t
+  Runlevel 0  poweroff.target
+  Runlevel 1  rescue.target
+  Runlevel 2  runlevel2.target
+  Runlevel 3  multi-user.target
+  Runlevel 4  undefined
+  Runlevel 5  graphical.target
+  Runlevel 6  reboot.target
+* To get the current target type: systemctl get-defaul  while to set target use systemctl set-default use isolate to change target at the same time
+
+👨🏽‍💻usage:To manipulate the target from the command line 
+👨🏽‍💻type:systemctl TARGET 
+👨🏽‍💻note: poweroff and reboot can be use in place of the target in upper command and there might be need of --force flag, can also be used twice 
+👨🏽‍💻note: To set the default target use set-default option succeed by target example systemctl set-default multiuser.target
+👨🏽‍💻note: To shedule the shutdown and reboot type: shutdown TIME-IN-24-HOUR-FORMAT         timing limit 00:00 to 23:59
+👨🏽‍💻note: To shutdown after n time type: shutdown +TIME-IN-MINUTES 
+👨🏽‍💻note: To do reboot like shutdown just use -r option 
+👨🏽‍💻note: To pass the message to user before the system boot off just type 'MESSAGE IN SINGLE QUOTES ' ex: shutdown 01:00 'System will at 1 o clock'
+
+Unit - services 
+
+* The instructions given to the init system are called units these can be of multiple types like service, socket timer etc 
+* daemons are the services that run in the background and provide need to other processes and services ex sshd 
+* Accept or not but the systemd is the goat systemd is a daemon that can be used for managing other services 
+
+👨🏽‍💻usage:To view the service configuration file 
+👨🏽‍💻type: systemctl cat SERVICE-NAME.service
+
+👨🏽‍💻usage:To edit the service configuration file 
+👨🏽‍💻type: systemctl edit --full SERVICE-NAME.service
+
+👨🏽‍💻usage:To reset the service default settings 
+👨🏽‍💻type: systemctl revert SERVICE-NAME.service
+
+👨🏽‍💻usage:To manually start the service 
+👨🏽‍💻type: systemctl start SERVICE-NAME.service
+
+👨🏽‍💻usage:To check the status of the service 
+👨🏽‍💻type: systemctl status SERVICE-NAME.service
+
+👨🏽‍💻usage:To stop the service 
+👨🏽‍💻type: systemctl stop SERVICE-NAME.service
+
+👨🏽‍💻usage:To restart the service 
+👨🏽‍💻type: systemctl restart SERVICE-NAME.service
+
+👨🏽‍💻usage:To reload the service 
+👨🏽‍💻type: systemctl reload SERVICE-NAME.service
+
+👨🏽‍💻usage:To reload first if not the restart the service 
+👨🏽‍💻type: systemctl reload-or-restart SERVICE-NAME.service
+
+👨🏽‍💻usage:To disable the service 
+👨🏽‍💻type:systemctl disable SERVICE-NAME.service
+👨🏽‍💻type: To disable and stop the service use --now option after disable 
+
+👨🏽‍💻usage:To enable the service 
+👨🏽‍💻type:systemctl enable SERVICE-NAME.service
+👨🏽‍💻type: To enable and start the service use --now option after enable 
+
+👨🏽‍💻usage:To check if the service is enabled  
+👨🏽‍💻type:  systemctl is-enabled SERVICE-NAME.service
+
+👨🏽‍💻usage:To prevent service auto starting the other services 
+👨🏽‍💻type:systemctl mask SERVICE-NAME.service
+👨🏽‍💻type: To unmask it just use unmask instead of mask 
+
+👨🏽‍💻usage:To list all the services 
+👨🏽‍💻type: systemctl list-units --type service --all 
+
+👨🏽‍💻usage:To list dependencies installed  
+👨🏽‍💻type: systemctl list-dependencies
+
+* In terms of systemd based init systems user can create and run their own services using systemd/systemctl the ervices managed by systemd are stored
+  in three main locations based on their priority 
+* /usr/lib/systemd/system/ (RHEL) or /lib/systemd/system/ (Debian) services stored in this location have the highest priority and are provided by the
+  operating system
+* /etc/systemd/system these have the lower priority as compare to the lib ones these are mainly used for modifying certain behaviour of the services 
+  without changing the orignal files 
+* /usr/lib/systemd/user/ (RHEL) or /lib/systemd/user/ (Debian) service files stored on these location are specific to user environmet 
+* It is hightly recommended to used /etc/systemd/system location as editing the orignal unit files can be dangerous 
+* The service files used by the systemd has an extension of .service and can be managed by the above listed commands 
+
+The basic service file have three main sections [Unit] [Service] [Install]
+
+[Unit] 
+* unit sectiion is like meta data of the service it have some attributes like 
+Description=A short description of the service 
+Documentation=url or path to service documentation
+After=units that should run before this service 
+Before=Units that must run after this service 
+Requires=List of unit files that this service cannot run aka depend on failure of unit in this part will result in failure of the service 
+Wants=similar to Requires but failure of unit files will not result in failure of the Service
+Conflicts=List of unit files that must not start at the same time elese it will cause clashes 
+
+[Service]
+* This section tells about how the service works like start restart stop etc 
+Type=Tells how a process will start cause at the end of the day services are just processes  
+ExecStartPre=command to run before the service start 
+ExecStratPro=command to run after the start of the service 
+ExecStart=command to start the service 
+ExecStopPre=command to run before stpping the service 
+ExecStop=command to stop the service 
+ExecStopPro=command to run after the service stops
+WorkingDirectory=Directory where the command is executed 
+Environment=Sets the environment variable for the service 
+Restart=vale when to restart again possible values - always, on-failure
+RestartSec=delay in seconds to restart the service again 
+ExecReload=command to reload the values for the service 
+StandardOutput=file path in which the output is to be generated 
+StandardError=file path in which the errors are stored 
+
+[Install]
+WantedBy=Target linked to enable the service 
+RequiredBy=Service is required for specific target
+
+Logs 
+
+* Logs are the messeges thata re stored in form of text files which tells about many thing including status error messeges and other.
+* rsyslog is one of the system applications that collect and organise system logs 
+* rsyslog stores th logs in /var/logs directory 
+* secure directory stores logs related to the security authentication 
+* journalctl deamon can be used to perfectly counter system logs 
+
+👨🏽‍💻usage:To know the logs
+👨🏽‍💻type:journalctl
+👨🏽‍💻note:use -f flag to view the logs in real time
+👨🏽‍💻note:use -e flag to jump to last log  
+👨🏽‍💻note:To use the functionalities of grep -g flag is used example ~ journalctl -p info -g "^N"
+👨🏽‍💻note:To serach on the basics of the time -S flag is used example - journalctl -S 02:00   This flag also supports dates 'year-month-day hour:minute:second'
+
+
+👨🏽‍💻usage:To find the logs generated by the particular command 
+👨🏽‍💻type: journalctl COMMAND-PATH 
+
+👨🏽‍💻usage:To find the logs generated by the particular service 
+👨🏽‍💻type: journalctl -u SERVICE-NAME.service
+
+👨🏽‍💻usage:To find the logs on the basics of priority
+👨🏽‍💻type: journalctl -p PRIORITY-NAME 
+👨🏽‍💻note: err for error logs 
+        infor for info logs 
+        crit for critical task logs
+        warning for warning logs 
+ 
+👨🏽‍💻usage:To find the logs generated in the currebt boot session 
+👨🏽‍💻type: journalctl -b 0
+👨🏽‍💻usage:To find the logs generated by the particular command 
+👨🏽‍💻note:0 is used for current boot -1 is used for previous boot and the number goes on 
+
+Shedule tasks
+
+* crontab is one of the utilities that can be used to do repetative tasks but it is limited by power if the power goes off cron is un functional 
+* in crontab full path is used to know the full path type which COMMAND
+* To organize the task special directories can be used like /etc/cron.daily/  /etc/cron.hourly
+* anacron is utility that can do task even if the power is off but it have a minimum time unit of day 
+* The logs generated by crontab and anacrontab can be seen in /var/log/
+
+👨🏽‍💻usage:To shedule tab using crontab of the user 
+👨🏽‍💻type: crontab -e 
+👨🏽‍💻note: The first five value represent time  6 represent user 7 command 
+        first  - minute (0-59)
+        second  - hour(0-23)
+        third - day of month (1-31) mon tue wed thu fri sat sun (three letter short form can also be used)
+        fourth  - month (1-12) jan feb mar apr (three letter short forms can also be used)
+        fifth  - day of the week (0-6) where 0 is sunday 
+        the * represent every value 
+        the , can be used to add multipple time 6,9 
+        the - can be used to specify range 6-9 the job will run on 6 7 8 9 the basic step is one unit /NUMBER can be used to add custom steps ex 6-9/2 
+To list the current entries of the crontab -l flag can be used 
+To edit the crontab of the another user use: crontab -e -u USERNAME 
+To remove the crontab of the another user use: crontab -r -u USERNAME 
+
+👨🏽‍💻usage:To shedule tab using anacrontab of the user 
+👨🏽‍💻type:vi /etc/anacrontab
+       first - Period (@daily @weekly @monthly)
+       delay - in minutes how much time the job will wait to execute after boot 
+       identifier - any name given to task which would be used for logs 
+       command  - full path of command 
+To check the wrong entries anacrontab -T can be used 
+
+👨🏽‍💻usage:To list all the kernel runtime parameters
+👨🏽‍💻type:sudo sysctl -a
+👨🏽‍💻note: To write a value to parameter type: sysctl -w PARAMETER-NAME=VALUE , The value passed will be reset to default on reboot 
+        To make changes presistent create a file /etc/sysctl.d/FILE-NAME-WITH-DOT-CONFIG-EXTENSION.config , now the file has been created just 
+        type the PARAMETER-NAME=DESIRED-VALUE
+        To read the file parameter instantly type: sysctl -p PATH-TO-PARAMETER-CONFIG-FILE  
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Storage management 
+
+* Partitions can be defined as a part of disk which act as a seperate disk thus being seperate disk there can be more partitions with more schemes 
+* GPT and MBR are the most common used partitioning schemes MBR limited to 2 tb while GPT limited to 18.4 million tb of disk 
+* windows used ntfs file system while linux uses file system like ext4 for the boot partition generally efi file system is used
+* fdisk and cfdisk (package: disk-util ) dd are one of the most common utilities for disk management
+* lsblk can be use to view the block devices 
+
+👨🏽‍💻usage:To view system disk info
+👨🏽‍💻type: parted -l
+👨🏽‍💻note: parted utility comes in pated package
+        To see the info about specific block type fdisk --list /PARTITION-PATH
+
+* swap partition is a type of partition which stores the pages aka process parts 
+
+👨🏽‍💻usage:To view all swap partition
+👨🏽‍💻type: swapon --show
+👨🏽‍💻note: To get more info use: swapon --verbose PATH-TO-SWAP-PARTITION
+
+👨🏽‍💻usage:To create a swap partition
+👨🏽‍💻type: mkswap PATH-TO-SWAP-PARTITION
+👨🏽‍💻note: Apart from partition files can be used as swap too just use the dd command to write a file with zeros with blocksize=page 
+
+👨🏽‍💻usage:To remove a swap partition
+👨🏽‍💻type: swapoff PATH-TO-SWAP-PARTITION
+
+* use xfs_admin to manipulate xfs file system and tune2fs for ext4 file systems 
+
+👨🏽‍💻usage:To format partition with a certain filesystem 
+👨🏽‍💻type: mkfs.FILE-SYSTEM PATH-TO-PARTITION 
+👨🏽‍💻note: -L flag can be used for labeling the file system 
+       -i size=PREFFERED-INODE-SIZE    can be used for custom number of inodes and -N for number of inodes 
+
+* in order to access file system mounting is necessary except in case of swap 
+* /etc/fstab is the file which is used to mount the partitions automaticially on boot the syntax of the file is as follows ~ 
+      EXACT-PATH-TO-PARTITION PARTH-OF-DIRECTORY FILE-SYSTEM MOUNT-OPTIONS(normal value: defaults) BACKUP(0 for disable 1 for enable) 
+                                                                                SCAN-FOR-ERRORS(0 for never 1 for first 2 for should)
+* blkid PATH-TO-PARTITION can be used to extract the blk unique id its is highly advice to use blkid insted of PARTITION-PATHS sime example like 
+  UUID=UID-OF-THE-PARTITION
+
+👨🏽‍💻usage:To check all mountpoints 
+👨🏽‍💻type: findmnt
+👨🏽‍💻note: use -t flag precceed by the file system name to search the mounted system with desired file system 
+
+👨🏽‍💻usage:To mount filesystem 
+👨🏽‍💻type: mount PARTH-TO-PARTITION PATH-TO-MOUNTING-DIRECTORY
+👨🏽‍💻note: to unmount the partition use: unmount PARTH-TO-PARTITION 
+        to mount with specific permissions use -o flag precceed by the permissons example: -o ro,noexec,nosuid
+
+* lvm is a used to manage disk space its package is lvm2 it have multiple examples like treating multiple disks as a single unit expanding or resizing 
+* All the disk in first are initilized with lvm partitoning scheme after this is done they are added to volume group from this volume group logica volumes 
+  are created which act as a seperate disk with a filesystem  
+* The volume group created can be seen in the /dev and the logical volumes created from it can be seen under it still after all work is done logical volumes 
+  have to be formatted with a file system and has to be mounted 
+
+👨🏽‍💻usage:To know the info about lvm 
+👨🏽‍💻type: lvmdiskscan pvs lvs vgs lvdisplay
+        
+
+👨🏽‍💻usage:To create a physical volume aka initilize a disk with lvm 
+👨🏽‍💻type: pvcreate PATH-TO-NEWLY-ATTACHED-disk
+
+👨🏽‍💻usage:To remove a physical volume 
+👨🏽‍💻type: pvremove --force PATH-TO-PHYSICAL-VOLUME
+
+👨🏽‍💻usage:To create a volume gropup and add newly created disk to it 
+👨🏽‍💻type: vgcreate DESIRED-VG-NAME PATH-TO-PHYSICAL-VOLUME 
+
+👨🏽‍💻usage:To create a logical volume out of the volume group 
+👨🏽‍💻type: lvcreate -L DESIRED-SIZE -n DESIRED-NAME VOLUME-GROUP 
+
+👨🏽‍💻usage:To make a file system on it  
+👨🏽‍💻type: mkfs.ext4 PATH-TO-LOGICAL-VOLUME 
+
+* SUPPOSE THERE THE VOLUME GROUP GETS F'''' UP IN THAT CASE NEW DISK CAN BE ADDED TO THE VOLUME GROUP STEPS 
+  initilize disk with lvm aka create physical volume of it 
+  after the physical volume is created use this command 
+
+👨🏽‍💻usage:To add new physical disk aka extend volume group
+👨🏽‍💻type: vgextend VOLUME-GROUP PATH-TO-NEW-DISK 
+
+👨🏽‍💻usage:To remove physical disk aka shrink volume group
+👨🏽‍💻type: vgreduce VOLUME-GROUP PATH-TO-PHYSICAL-VOLUME
+
+👨🏽‍💻usage:To remove a volume group 
+👨🏽‍💻type: vgremove --force PATH-TO-VOLUME-GROUP
+
+👨🏽‍💻usage:To resize a logical volume
+👨🏽‍💻type: lvresize --size DESIRED-SIZE PATH-TO-LOGICAL-VOLUME 
+ 
+
+* quota can be used for limiting user and groups to use the space its package name is quota 
+* to apply quota add options which mounting the partitions like usrquota,grpquota in the fstab 
+
+👨🏽‍💻usage:To create file for checking user and group using space 
+👨🏽‍💻type: quotacheck --create-files --user --group PATH-TO-BLOCK-DEVICE 
+👨🏽‍💻note: This will create two files aquota.user and aquota.group and store the disk usage information
+
+👨🏽‍💻usage:To turn on quota tracking 
+👨🏽‍💻type: quotaon MOUNT-POINT-OF-FILE-SYSTEM
+👨🏽‍💻note: quota can be turned off using quotaoff command 
+
+👨🏽‍💻usage:To chek and edit details of the disk used 
+👨🏽‍💻type: edquota --user USER-NAME 
+
+  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
